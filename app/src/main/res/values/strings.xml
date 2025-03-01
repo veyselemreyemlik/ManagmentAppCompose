@@ -10,4 +10,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_password_reset">PasswordReset</string>
+    <string name="title_activity_sign_up">SignUp</string>
 </resources>
