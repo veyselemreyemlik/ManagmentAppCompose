@@ -91,7 +91,7 @@ fun PaymentTitle() {
 
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
-            Text("Ödeme Özeti", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Text("Ödeme Özetii", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(8.dp))
             }
         }
