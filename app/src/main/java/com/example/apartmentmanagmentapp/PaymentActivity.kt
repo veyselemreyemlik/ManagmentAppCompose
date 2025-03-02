@@ -10,13 +10,25 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.apartmentmanagmentapp.AnnouncementCard
 import com.example.apartmentmanagmentapp.ui.theme.ApartmentManagmentAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -48,19 +61,27 @@ fun PaymentScreen() {
             .fillMaxSize()
             .background(Color(0xFFF5F5F5))
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        PaymentTitle()
-        Spacer(modifier = Modifier.height(16.dp))
-        ProgressSteps()
-        Spacer(modifier = Modifier.height(16.dp))
-        PaymentForm()
-        Spacer(modifier = Modifier.height(16.dp))
-        PaymentSummary()
 
+        horizontalAlignment = Alignment.CenterHorizontally,
+
+    ) {
+        Column(
+            modifier = Modifier.weight(1f), // İçeriği genişletip nav bar'ı en alta iter
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            PaymentTitle()
+            Spacer(modifier = Modifier.height(16.dp))
+            ProgressSteps()
+            Spacer(modifier = Modifier.height(16.dp))
+            PaymentForm()
+            Spacer(modifier = Modifier.height(16.dp))
+            PaymentSummary()
+        }
+        BottomNavBar()
 
     }
 }
+
 @Composable
 fun PaymentTitle() {
     Card(
@@ -156,6 +177,29 @@ fun StepItem(label: String, isActive: Boolean, isCompleted: Boolean) {
         Text(label, fontSize = 12.sp, fontWeight = FontWeight.Medium)
     }
 }
+
+@Composable
+fun BottomNavBar() {
+    val items = listOf(
+        "Home" to Icons.Filled.Home,
+        "Calendar" to Icons.Filled.DateRange,
+        "Bell" to Icons.Filled.Notifications,
+        "User" to Icons.Filled.Person,
+        "Settings" to Icons.Filled.Settings
+    )
+
+    NavigationBar {
+        items.forEach { (title, icon) ->
+            NavigationBarItem(
+                icon = { Icon(imageVector = icon, contentDescription = title) },
+                label = { Text(title) },
+                selected = false,
+                onClick = {}
+            )
+        }
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
