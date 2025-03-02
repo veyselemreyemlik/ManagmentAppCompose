@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             ApartmentManagmentAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Uygulama Yazı",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
